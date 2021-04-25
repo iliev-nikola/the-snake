@@ -1,17 +1,41 @@
 body {
+  font-family: monospace;
+}
+
+/* header */
+#header {
+  display: flex;
+  justify-content: center;
+}
+
+#title {
+  margin: 20px 0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+#title > h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+#title > p {
+  font-size: 18px;
+}
+
+/* main container */
+#main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#main {
+#mainContainer {
   border: 1px solid black;
-  margin-top: 80px;
 }
 
 #gameOverScreen {
   background-color: rgba(255, 255, 255, 0.541);
-  margin-top: 80px;
   position: fixed;
   display: none;
   justify-content: center;
@@ -19,7 +43,6 @@ body {
 }
 
 #gameOverScreen > h1 {
-  font-family: monospace;
   font-weight: 600;
   font-size: 32px;
 }

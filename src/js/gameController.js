@@ -36,6 +36,7 @@ function render() {
 
 
 document.body.addEventListener('keydown', (e) => {
+    e.preventDefault();
     if (settings.isGameOver) {
         return;
     }
@@ -53,6 +54,8 @@ document.body.addEventListener('keydown', (e) => {
     } else if (e.key === 'ArrowRight') {
         if (lastDirection === 'right' || lastDirection === 'left') {
             return;
+        } else if (!timer) {
+            snake = snake.reverse();
         }
 
         clearInterval(timer);
@@ -78,5 +81,17 @@ document.body.addEventListener('keydown', (e) => {
             move('left');
             render();
         }, settings.speed);
+    } else if (e.key === ' ') {
+        location.reload();
     }
 });
+
+SPEED_UP.addEventListener('click', (e) => {
+    e.preventDefault();
+    settings.speed -= 15;
+});
+
+SPEED_DOWN.addEventListener('click', (e) => {
+    e.preventDefault();
+    settings.speed += 15;
+})

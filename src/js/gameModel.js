@@ -17,7 +17,7 @@ for (let i = 0; i < settings.height; i++) {
 gameBox[14][10] = 1;
 gameBox[14][11] = 1;
 gameBox[14][12] = 1;
-const snake = [{ x: 10, y: 14 }, { x: 11, y: 14 }, { x: 12, y: 14 }];
+let snake = [{ x: 10, y: 14 }, { x: 11, y: 14 }, { x: 12, y: 14 }];
 placeRandomDot('initial');
 let oldCell;
 
