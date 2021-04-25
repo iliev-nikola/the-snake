@@ -1,4 +1,4 @@
-# The Snake
+# The Snake (in progress...)
 
 ## My version of the game "The Snake"
 
@@ -7,4 +7,3 @@
 - Languages: Vanilla JS, HTML & CSS
 - Pattern: MVC
 - Storage: Browser's Local Storage
-- Screenshots:
