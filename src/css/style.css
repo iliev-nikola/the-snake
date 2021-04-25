@@ -1,5 +1,6 @@
 body {
   font-family: monospace;
+  background-color: wheat;
 }
 
 /* header */
@@ -8,32 +9,39 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 #score {
-  width: 200px;
+  text-align: right;
+}
+
+#score > tbody > tr > td {
+  width: 40px;
+  text-align: right;
 }
 
 .score-title {
+  width: 120px;
   font-weight: 600;
 }
 
 #speed {
   display: flex;
   justify-content: center;
-  width: 200px;
+  width: 160px;
   text-align: center;
 }
 
 #title {
-  width: 200px;
+  width: 240px;
   margin: 30px 60px;
   text-align: center;
   line-height: 1.2;
 }
 
 #title > h1 {
-  font-size: 40px;
+  font-size: 44px;
   font-weight: 600;
 }
 
@@ -59,7 +67,8 @@ body {
 }
 
 #mainContainer {
-  border: 1px solid black;
+  border: 3px solid rgb(14, 77, 1);
+  border-radius: 2px;
 }
 
 #gameOverScreen {
@@ -82,11 +91,16 @@ body {
 .cell {
   width: 10px;
   height: 10px;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   box-sizing: border-box;
   transition: 0.1s all ease;
 }
 
 .emptyCell {
   background-color: black;
+}
+
+.snakeCell,
+.newCell {
+  border: 1px solid green;
 }

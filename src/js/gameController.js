@@ -3,7 +3,28 @@ GAME_OVER_SCREEN.style.width = settings.width * 10 + 'px';
 GAME_OVER_SCREEN.style.height = settings.height * 10 + 'px';
 
 // Make initial render of the box
-(function makeInitialBox() {
+function makeInitialBox() {
+    // clear the initial data to start from the beginning
+    clearInterval(timer);
+    settings.isGameOver = false;
+    settings.points = 0;
+    settings.speed = 150;
+    MAIN_CONTAINER.innerHTML = '';
+    GAME_OVER_SCREEN.style.display = 'none';
+    CURRENT_SCORE.innerHTML = 0;
+    lastDirection = null;
+    gameBox = [];
+    for (let i = 0; i < settings.height; i++) {
+        const arr = new Array(settings.width).fill(0);
+        gameBox.push(arr);
+    }
+
+    gameBox[middleY][middleX] = 1;
+    gameBox[middleY][middleX + 1] = 1;
+    gameBox[middleY][middleX + 2] = 1;
+    snake = [{ x: middleX, y: middleY }, { x: middleX + 1, y: middleY }, { x: middleX + 2, y: middleY }];
+    placeRandomDot('initial');
+
     gameBox.forEach(row => {
         const newRow = document.createElement('div');
         newRow.className = 'row';
@@ -23,7 +44,9 @@ GAME_OVER_SCREEN.style.height = settings.height * 10 + 'px';
 
         MAIN_CONTAINER.append(newRow);
     });
-})();
+}
+
+makeInitialBox();
 
 function render() {
     const firstCell = snake[0];
@@ -37,6 +60,10 @@ function render() {
 
 document.body.addEventListener('keydown', (e) => {
     e.preventDefault();
+    if (e.key === ' ') {
+        return makeInitialBox();
+    }
+
     if (settings.isGameOver) {
         return;
     }
@@ -81,8 +108,6 @@ document.body.addEventListener('keydown', (e) => {
             move('left');
             render();
         }, settings.speed);
-    } else if (e.key === ' ') {
-        location.reload();
     }
 });
 

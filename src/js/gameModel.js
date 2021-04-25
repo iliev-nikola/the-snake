@@ -1,3 +1,4 @@
+// set user best score
 if (localStorage.getItem('snake')) {
     USER_BEST.innerHTML = JSON.parse(localStorage.getItem('snake')).bestScore;
 } else {
@@ -19,27 +20,26 @@ const settings = {
 let timer;
 let lastDirection;
 let oldCell;
-const gameBox = [];
-
-for (let i = 0; i < settings.height; i++) {
-    const arr = new Array(settings.width).fill(0);
-    gameBox.push(arr);
-}
+let gameBox;
 
 // initial position of the snake and first dot
-gameBox[14][10] = 1;
-gameBox[14][11] = 1;
-gameBox[14][12] = 1;
-let snake = [{ x: 10, y: 14 }, { x: 11, y: 14 }, { x: 12, y: 14 }];
-placeRandomDot('initial');
+const middleY = Math.floor(settings.height / 2);
+const middleX = Math.floor(settings.width / 2);
+let snake = [{ x: middleX, y: middleY }, { x: middleX + 1, y: middleY }, { x: middleX + 2, y: middleY }];
 
 function move(direction) {
     const newCell = {};
     const { x, y } = snake[0];
     // change coordinates by the new direction
     if (direction === 'up') {
+        // if (y - 1 > 0 && gameBox[y - 1][x] === 2) {
+        //     snake.unshift({ x: x, y: y - 1 });
+        //     newCell.x = x;
+        //     newCell.y = y - 2;
+        // } else {
         newCell.x = x;
         newCell.y = y - 1;
+        // }
     } else if (direction === 'right') {
         newCell.x = x + 1;
         newCell.y = y;
@@ -75,7 +75,7 @@ function move(direction) {
         GAME_OVER_SCREEN.style.display = 'flex';
         if (settings.points > settings.currentBest) {
             settings.currentBest = settings.points;
-            CURRENT_SCORE.innerHTML = settings.points;
+            CURRENT_BEST.innerHTML = settings.points;
         }
 
         if (settings.points > settings.userBest) {
