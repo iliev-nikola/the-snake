@@ -1,3 +1,7 @@
+// setup the size of the game over screen
+GAME_OVER_SCREEN.style.width = settings.width * 10 + 'px';
+GAME_OVER_SCREEN.style.height = settings.height * 10 + 'px';
+
 // Make initial render of the box
 (function makeInitialBox() {
     gameBox.forEach(row => {
@@ -30,22 +34,49 @@ function render() {
     oldCells[oldCell.x].className = 'cell emptyCell';
 }
 
+
 document.body.addEventListener('keydown', (e) => {
-    if (isGameOver) {
+    if (settings.isGameOver) {
         return;
     }
 
     if (e.key === 'ArrowUp') {
-        move('up');
-        render();
+        if (lastDirection === 'up' || lastDirection === 'down') {
+            return;
+        }
+
+        clearInterval(timer);
+        timer = setInterval(() => {
+            move('up');
+            render();
+        }, settings.speed);
     } else if (e.key === 'ArrowRight') {
-        move('right');
-        render();
+        if (lastDirection === 'right' || lastDirection === 'left') {
+            return;
+        }
+
+        clearInterval(timer);
+        timer = setInterval(() => {
+            move('right');
+            render();
+        }, settings.speed);
     } else if (e.key === 'ArrowDown') {
-        move('down');
-        render();
+        if (lastDirection === 'down' || lastDirection === 'up') {
+            return;
+        }
+        clearInterval(timer);
+        timer = setInterval(() => {
+            move('down');
+            render();
+        }, settings.speed);
     } else if (e.key === 'ArrowLeft') {
-        move('left');
-        render();
+        if (lastDirection === 'left' || lastDirection === 'right') {
+            return;
+        }
+        clearInterval(timer);
+        timer = setInterval(() => {
+            move('left');
+            render();
+        }, settings.speed);
     }
 });

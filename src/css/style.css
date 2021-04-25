@@ -9,6 +9,21 @@ body {
   margin-top: 80px;
 }
 
+#gameOverScreen {
+  background-color: rgba(255, 255, 255, 0.541);
+  margin-top: 80px;
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameOverScreen > h1 {
+  font-family: monospace;
+  font-weight: 600;
+  font-size: 32px;
+}
+
 .row {
   display: flex;
 }
@@ -18,14 +33,9 @@ body {
   height: 10px;
   border: 1px solid green;
   box-sizing: border-box;
+  transition: 0.1s all ease;
 }
 
 .emptyCell {
   background-color: black;
-}
-
-.snakeCell {
-}
-
-.newCell {
 }
