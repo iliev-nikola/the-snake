@@ -5,3 +5,4 @@ const SPEED_DOWN = getById('speedDownBtn');
 const CURRENT_SCORE = getById('currentScore');
 const CURRENT_BEST = getById('currentBest');
 const USER_BEST = getById('userBest');
+const SPEED_COUNTER = getById('speedCounter');

@@ -11,6 +11,7 @@ const settings = {
     height: 45,
     width: 30,
     speed: 150,
+    speedCounter: 1,
     isGameOver: false,
     points: 0,
     currentBest: 0,
@@ -72,17 +73,6 @@ function move(direction) {
         settings.isGameOver = true;
         clearInterval(timer);
         GAME_OVER_SCREEN.style.display = 'flex';
-        if (settings.points > settings.currentBest) {
-            settings.currentBest = settings.points;
-            CURRENT_BEST.innerHTML = settings.points;
-        }
-
-        if (settings.points > settings.userBest) {
-            settings.userBest = settings.points;
-            localStorage.setItem('snake', JSON.stringify({ bestScore: settings.points }));
-            USER_BEST.innerHTML = settings.userBest;
-        }
-
         return;
     } else {
         settings.points += 10;

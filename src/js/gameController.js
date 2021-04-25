@@ -61,6 +61,16 @@ function render() {
 document.body.addEventListener('keydown', (e) => {
     e.preventDefault();
     if (e.key === ' ') {
+        if (settings.points > settings.currentBest) {
+            settings.currentBest = settings.points;
+            CURRENT_BEST.innerHTML = settings.points;
+        }
+
+        if (settings.points > settings.userBest) {
+            settings.userBest = settings.points;
+            localStorage.setItem('snake', JSON.stringify({ bestScore: settings.points }));
+            USER_BEST.innerHTML = settings.userBest;
+        }
         return makeInitialBox();
     }
 
@@ -84,7 +94,6 @@ document.body.addEventListener('keydown', (e) => {
         } else if (!timer) {
             snake = snake.reverse();
         }
-
         clearInterval(timer);
         timer = setInterval(() => {
             move('right');
@@ -114,9 +123,13 @@ document.body.addEventListener('keydown', (e) => {
 SPEED_UP.addEventListener('click', (e) => {
     e.preventDefault();
     settings.speed -= 15;
+    settings.speedCounter++;
+    SPEED_COUNTER.innerHTML = settings.speedCounter;
 });
 
 SPEED_DOWN.addEventListener('click', (e) => {
     e.preventDefault();
     settings.speed += 15;
+    settings.speedCounter--;
+    SPEED_COUNTER.innerHTML = settings.speedCounter;
 });

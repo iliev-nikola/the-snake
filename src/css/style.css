@@ -1,6 +1,6 @@
 body {
   font-family: monospace;
-  background-color: wheat;
+  background-color: lightskyblue;
 }
 
 /* header */
@@ -19,6 +19,7 @@ body {
 #score > tbody > tr > td {
   width: 40px;
   text-align: right;
+  font-weight: 600;
 }
 
 .score-title {
@@ -31,6 +32,10 @@ body {
   justify-content: center;
   width: 160px;
   text-align: center;
+}
+
+#speed > h1 {
+  font-weight: 600;
 }
 
 #title {
@@ -91,6 +96,7 @@ body {
 .cell {
   width: 10px;
   height: 10px;
+  background-color: white;
   /* border: 1px solid green; */
   box-sizing: border-box;
   transition: 0.1s all ease;
@@ -103,4 +109,11 @@ body {
 .snakeCell,
 .newCell {
   border: 1px solid green;
+}
+
+/* footer */
+#footer {
+  line-height: 1.5;
+  margin-top: 20px;
+  text-align: center;
 }
