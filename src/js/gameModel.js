@@ -67,8 +67,7 @@ function move(direction) {
     if (gameBox[newCell.y][newCell.x] === 0) {
         oldCell = snake.pop();
         gameBox[newCell.y][newCell.x] = 1;
-        const lastCell = snake[snake.length - 1];
-        gameBox[lastCell.y][lastCell.x] = 0;
+        gameBox[oldCell.y][oldCell.x] = 0;
     } else if (gameBox[newCell.y][newCell.x] === 1) {
         settings.isGameOver = true;
         clearInterval(timer);

@@ -24,7 +24,7 @@ function makeInitialBox() {
     gameBox[middleY][middleX + 2] = 1;
     snake = [{ x: middleX, y: middleY }, { x: middleX + 1, y: middleY }, { x: middleX + 2, y: middleY }];
     placeRandomDot('initial');
-
+    console.log(gameBox)
     gameBox.forEach(row => {
         const newRow = document.createElement('div');
         newRow.className = 'row';
