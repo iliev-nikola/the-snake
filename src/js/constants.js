@@ -1,0 +1,1 @@
+const MAIN_CONTAINER = getById('main');
