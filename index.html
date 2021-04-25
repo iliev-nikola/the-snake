@@ -12,16 +12,27 @@
     </head>
     <body>
         <header id="header">
-            <div id="result">
-                <h1>Result:</h1>
-            </div>
+            <table id="score">
+                <tr>
+                    <th class="score-title">CURRENT SCORE:</th>
+                    <td id="currentScore">0</td>
+                </tr>
+                <tr>
+                    <th class="score-title">CURRENT BEST:</th>
+                    <td id="currentBest">0</td>
+                </tr>
+                <tr>
+                    <th class="score-title">USER'S BEST:</th>
+                    <td id="userBest"></td>
+                </tr>
+            </table>
             <div id="title">
                 <h1>The Snake</h1>
                 <p>Kolyo's edition</p>
             </div>
             <div id="speed">
                 <button id="speedDownBtn">-</button>
-                <h1>Speed</h1>
+                <h1>SPEED</h1>
                 <button id="speedUpBtn">+</button>
             </div>
         </header>

@@ -94,4 +94,4 @@ SPEED_UP.addEventListener('click', (e) => {
 SPEED_DOWN.addEventListener('click', (e) => {
     e.preventDefault();
     settings.speed += 15;
-})
+});

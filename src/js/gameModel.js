@@ -1,25 +1,37 @@
+if (localStorage.getItem('snake')) {
+    USER_BEST.innerHTML = JSON.parse(localStorage.getItem('snake')).bestScore;
+} else {
+    localStorage.setItem('snake', JSON.stringify({ bestScore: 0 }));
+    USER_BEST.innerHTML = 0;
+}
+
+// initial settings of the field
 const settings = {
     height: 45,
     width: 30,
     speed: 150,
     isGameOver: false,
+    points: 0,
+    currentBest: 0,
+    userBest: JSON.parse(localStorage.getItem('snake')).bestScore,
 }
 
 let timer;
-const gameBox = [];
 let lastDirection;
+let oldCell;
+const gameBox = [];
 
 for (let i = 0; i < settings.height; i++) {
     const arr = new Array(settings.width).fill(0);
     gameBox.push(arr);
 }
 
+// initial position of the snake and first dot
 gameBox[14][10] = 1;
 gameBox[14][11] = 1;
 gameBox[14][12] = 1;
 let snake = [{ x: 10, y: 14 }, { x: 11, y: 14 }, { x: 12, y: 14 }];
 placeRandomDot('initial');
-let oldCell;
 
 function move(direction) {
     const newCell = {};
@@ -61,8 +73,21 @@ function move(direction) {
         settings.isGameOver = true;
         clearInterval(timer);
         GAME_OVER_SCREEN.style.display = 'flex';
-        return console.log('game over');
+        if (settings.points > settings.currentBest) {
+            settings.currentBest = settings.points;
+            CURRENT_SCORE.innerHTML = settings.points;
+        }
+
+        if (settings.points > settings.userBest) {
+            settings.userBest = settings.points;
+            localStorage.setItem('snake', JSON.stringify({ bestScore: settings.points }));
+            USER_BEST.innerHTML = settings.userBest;
+        }
+
+        return;
     } else {
+        settings.points += 10;
+        CURRENT_SCORE.innerHTML = settings.points;
         placeRandomDot();
     }
 

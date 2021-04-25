@@ -4,12 +4,30 @@ body {
 
 /* header */
 #header {
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+#score {
+  width: 200px;
+}
+
+.score-title {
+  font-weight: 600;
+}
+
+#speed {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  text-align: center;
 }
 
 #title {
-  margin: 20px 0;
+  width: 200px;
+  margin: 30px 60px;
   text-align: center;
   line-height: 1.2;
 }
@@ -21,6 +39,16 @@ body {
 
 #title > p {
   font-size: 18px;
+}
+
+#speed {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+}
+
+#speed > h1 {
+  padding: 0 10px;
 }
 
 /* main container */
