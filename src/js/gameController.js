@@ -6,10 +6,13 @@ GAME_OVER_SCREEN.style.height = settings.height * 10 + 'px';
 function makeInitialBox() {
     // clear the initial data to start from the beginning
     clearInterval(timer);
+    timer = null;
     settings.isGameOver = false;
     settings.points = 0;
     settings.speed = 150;
+    settings.speedCounter = 1;
     MAIN_CONTAINER.innerHTML = '';
+    SPEED_COUNTER.innerHTML = 1;
     GAME_OVER_SCREEN.style.display = 'none';
     CURRENT_SCORE.innerHTML = 0;
     lastDirection = null;
@@ -24,7 +27,6 @@ function makeInitialBox() {
     gameBox[middleY][middleX + 2] = 1;
     snake = [{ x: middleX, y: middleY }, { x: middleX + 1, y: middleY }, { x: middleX + 2, y: middleY }];
     placeRandomDot('initial');
-    console.log(gameBox)
     gameBox.forEach(row => {
         const newRow = document.createElement('div');
         newRow.className = 'row';
