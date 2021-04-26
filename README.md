@@ -15,7 +15,8 @@
 - Change game speed any time
 - Change game type (level)
 - Change theme
-- Left-handed compitability
+- Left-handed compatibility (WASD keys)
+- Store current/current best/user's best score
 
 ### Screenshots:
 
