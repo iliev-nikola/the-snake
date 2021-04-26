@@ -20,6 +20,6 @@
 
 ### Screenshots:
 
-[![main.png](https://i.postimg.cc/sDFsj7zM/main.png)](https://postimg.cc/Cd4WJZz0)
-[![border-style.png](https://i.postimg.cc/7LQrpTXY/border-style.png)](https://postimg.cc/yJ9GRxww)
-[![game-over.png](https://i.postimg.cc/GtwVCPDr/game-over.png)](https://postimg.cc/KkfJ7MQs)
+[![main.png](https://i.postimg.cc/SszVVG4W/main.png)](https://postimg.cc/TLfr3gpw)
+[![border-style.png](https://i.postimg.cc/02CntQTH/border-style.png)](https://postimg.cc/bss1rzNQ)
+[![game-over.png](https://i.postimg.cc/rmWC5FGj/game-over.png)](https://postimg.cc/hzDdBn5Q)
