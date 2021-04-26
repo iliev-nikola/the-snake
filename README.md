@@ -1,8 +1,8 @@
 # The Snake
 
-## My interpretation of the game "The Snake"
+## My retro interpretation of the game "The Snake"
 
-### Link to hosted project: [here](https://iliev-nikola.github.io/the-snake/)
+### Link to hosted project: [The Snake](https://iliev-nikola.github.io/the-snake/)
 
 ### Technologies:
 
