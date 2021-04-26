@@ -1,6 +1,6 @@
 # The Snake
 
-## My version of the game "The Snake"
+## My interpretation of the game "The Snake"
 
 ### Link to hosted project: [here](https://iliev-nikola.github.io/the-snake/)
 
@@ -15,6 +15,7 @@
 - Change game speed any time
 - Change game type (level)
 - Change theme
+- Left-handed compitability
 
 ### Screenshots:
 

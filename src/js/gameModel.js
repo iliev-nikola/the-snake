@@ -81,11 +81,11 @@ function move(direction) {
 }
 
 function placeRandomDot(type) {
-    let randomX = randomize(settings.width);
-    let randomY = randomize(settings.height);
+    let randomX = utils.randomize(settings.width);
+    let randomY = utils.randomize(settings.height);
     while (gameBox[randomY][randomX] !== 0) {
-        randomX = randomize(settings.width);
-        randomY = randomize(settings.height);
+        randomX = utils.randomize(settings.width);
+        randomY = utils.randomize(settings.height);
     }
 
     gameBox[randomY][randomX] = 2;

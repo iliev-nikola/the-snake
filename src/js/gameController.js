@@ -117,7 +117,7 @@ document.body.addEventListener('keydown', (e) => {
         return makeInitialBox();
     }
 
-    if (e.key === 'ArrowUp') {
+    if (e.key === 'ArrowUp' || e.key === 'w') {
         if (lastDirection === 'up' || lastDirection === 'down') {
             return;
         }
@@ -130,7 +130,7 @@ document.body.addEventListener('keydown', (e) => {
                 render();
             }, settings.speed);
         }
-    } else if (e.key === 'ArrowRight') {
+    } else if (e.key === 'ArrowRight' || e.key === 'd') {
         if (lastDirection === 'right' || lastDirection === 'left') {
             return;
         } else if (!timer) {
@@ -145,7 +145,7 @@ document.body.addEventListener('keydown', (e) => {
                 render();
             }, settings.speed);
         }
-    } else if (e.key === 'ArrowDown') {
+    } else if (e.key === 'ArrowDown' || e.key === 's') {
         if (lastDirection === 'down' || lastDirection === 'up') {
             return;
         }
@@ -158,7 +158,7 @@ document.body.addEventListener('keydown', (e) => {
                 render();
             }, settings.speed);
         }
-    } else if (e.key === 'ArrowLeft') {
+    } else if (e.key === 'ArrowLeft' || e.key === 'a') {
         if (lastDirection === 'left' || lastDirection === 'right') {
             return;
         }
