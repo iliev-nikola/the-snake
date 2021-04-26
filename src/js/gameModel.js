@@ -57,18 +57,21 @@ function move(direction) {
         newCell.y = 0;
     }
 
-    snake.unshift(newCell);
     // check what next cell contains
-    if (gameBox[newCell.y][newCell.x] === 0) {
+    const nextCellValue = gameBox[newCell.y][newCell.x];
+    if (nextCellValue === 0) {
+        // if it's free
         oldCell = snake.pop();
         gameBox[newCell.y][newCell.x] = 1;
         gameBox[oldCell.y][oldCell.x] = 0;
-    } else if (gameBox[newCell.y][newCell.x] === 1) {
+    } else if (nextCellValue === 1) {
+        // if it's border or any part of the snake
         settings.isGameOver = true;
         clearInterval(timer);
         GAME_OVER_SCREEN.style.display = 'flex';
         return;
-    } else {
+    } else if (nextCellValue === 2) {
+        // if it's food
         settings.points += 10;
         if (LEVEL.value === 'auto-speed-increase' || LEVEL.value === 'border-speed') {
             settings.speed -= 5;
@@ -77,6 +80,7 @@ function move(direction) {
         placeRandomDot();
     }
 
+    snake.unshift(newCell);
     lastDirection = direction;
 }
 
