@@ -15,6 +15,7 @@ body {
 /* score */
 #score {
   text-align: right;
+  line-height: 1.2;
 }
 
 #score > tbody > tr > td {
