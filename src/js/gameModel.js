@@ -15,6 +15,7 @@ const settings = {
     isGameOver: false,
     points: 0,
     currentBest: 0,
+    theme: 'classic',
     userBest: JSON.parse(localStorage.getItem('snake')).bestScore,
 }
 
@@ -76,6 +77,9 @@ function move(direction) {
         return;
     } else {
         settings.points += 10;
+        if (LEVEL.value === 'auto-speed-increase' || LEVEL.value === 'border-speed') {
+            settings.speed -= 5;
+        }
         CURRENT_SCORE.innerHTML = settings.points;
         placeRandomDot();
     }
@@ -96,6 +100,6 @@ function placeRandomDot(type) {
     if (!type) {
         const rows = Array.from(MAIN_CONTAINER.children);
         const cells = Array.from(rows[randomY].children);
-        cells[randomX].className = 'cell newCell';
+        cells[randomX].className = 'cell new-cell';
     }
 }

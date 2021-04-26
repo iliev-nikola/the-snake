@@ -32,10 +32,22 @@
                 <h1>The Snake</h1>
                 <p>Kolyo's edition &#128013;</p>
             </div>
-            <div id="speed">
-                <button id="speedDownBtn">-</button>
-                <h1>SPEED: <span id="speedCounter"></span></h1>
-                <button id="speedUpBtn">+</button>
+            <div id="options">
+                <div id="speed">
+                    <button id="speedDownBtn">-</button>
+                    <h1>SPEED: <span id="speedCounter"></span></h1>
+                    <button id="speedUpBtn">+</button>
+                </div>
+                <select name="level" id="level">
+                    <option value="" disabled selected>Choose level...</option>
+                    <option value="classic" title="Go thru walls">Classic</option>
+                    <option value="auto-speed-increase"
+                        title="Eat food and go faster">Auto-speed increase</option>
+                    <option value="border"
+                        title="Don't go thru walls">Border style</option>
+                    <option value="border-speed"
+                        title="Try to stay alive">Border & Speed</option>
+                </select>
             </div>
         </header>
         <main id="main">

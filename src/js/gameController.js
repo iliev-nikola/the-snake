@@ -17,9 +17,28 @@ function makeInitialBox() {
     CURRENT_SCORE.innerHTML = 0;
     lastDirection = null;
     gameBox = [];
-    for (let i = 0; i < settings.height; i++) {
-        const arr = new Array(settings.width).fill(0);
-        gameBox.push(arr);
+    if (LEVEL.value === 'border' || LEVEL.value === 'border-speed') {
+        for (let row = 0; row < settings.height; row++) {
+            let arr = [];
+            if (row === 0 || row === settings.height - 1) {
+                arr = new Array(settings.width).fill(1);
+            } else {
+                for (let col = 0; col < settings.width; col++) {
+                    if (col === 0 || col === settings.width - 1) {
+                        arr.push(1);
+                    } else {
+                        arr.push(0);
+                    }
+                }
+            }
+
+            gameBox.push(arr);
+        }
+    } else {
+        for (let i = 0; i < settings.height; i++) {
+            const arr = new Array(settings.width).fill(0);
+            gameBox.push(arr);
+        }
     }
 
     gameBox[middleY][middleX] = 1;
@@ -34,11 +53,11 @@ function makeInitialBox() {
             const cell = document.createElement('div');
             cell.className = 'cell';
             if (el === 1) {
-                cell.className += ' snakeCell';
+                cell.className += ' snake-cell';
             } else if (el === 2) {
-                cell.className += ' newCell';
+                cell.className += ' new-cell';
             } else {
-                cell.className += ' emptyCell';
+                cell.className += ' empty-cell';
             }
 
             newRow.append(cell);
@@ -54,12 +73,13 @@ function render() {
     const firstCell = snake[0];
     const rows = Array.from(MAIN_CONTAINER.children);
     const firstCells = Array.from(rows[firstCell.y].children);
-    firstCells[firstCell.x].className = 'cell snakeCell';
+    firstCells[firstCell.x].className = 'cell snake-cell';
     const oldCells = Array.from(rows[oldCell.y].children);
-    oldCells[oldCell.x].className = 'cell emptyCell';
+    oldCells[oldCell.x].className = 'cell empty-cell';
 }
 
-
+// EVENT LISTENERS
+// keys
 document.body.addEventListener('keydown', (e) => {
     e.preventDefault();
     if (e.key === ' ') {
@@ -122,6 +142,7 @@ document.body.addEventListener('keydown', (e) => {
     }
 });
 
+// speed
 SPEED_UP.addEventListener('click', (e) => {
     e.preventDefault();
     settings.speed -= 15;
@@ -134,4 +155,9 @@ SPEED_DOWN.addEventListener('click', (e) => {
     settings.speed += 15;
     settings.speedCounter--;
     SPEED_COUNTER.innerHTML = settings.speedCounter;
+});
+
+LEVEL.addEventListener('change', (e) => {
+    e.preventDefault();
+    makeInitialBox();
 });
