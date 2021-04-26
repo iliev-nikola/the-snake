@@ -10,9 +10,9 @@ function makeInitialBox() {
     settings.isGameOver = false;
     settings.points = 0;
     settings.speed = 150;
-    settings.speedCounter = 1;
+    settings.speedCounter = 0;
     MAIN_CONTAINER.innerHTML = '';
-    SPEED_COUNTER.innerHTML = 1;
+    SPEED_COUNTER.innerHTML = settings.speedCounter;
     GAME_OVER_SCREEN.style.display = 'none';
     CURRENT_SCORE.innerHTML = 0;
     lastDirection = null;
@@ -55,12 +55,18 @@ function makeInitialBox() {
             const cell = document.createElement('div');
             cell.className = 'cell';
             if (el === 1) {
-                cell.className += ' snake-cell';
+                if (THEME.value === 'light') {
+                    cell.className += ' snake-cell-light';
+                } else {
+                    cell.className += ' snake-cell';
+                }
             } else if (el === 2) {
                 cell.className += ' new-cell';
             } else {
                 if (THEME.value === 'pixelized') {
                     cell.className += ' empty-cell-pixelized';
+                } else if (THEME.value === 'light') {
+                    cell.className += ' empty-cell-light';
                 } else {
                     cell.className += ' empty-cell';
                 }
@@ -79,11 +85,15 @@ function render() {
     const firstCell = snake[0];
     const rows = Array.from(MAIN_CONTAINER.children);
     const firstCells = Array.from(rows[firstCell.y].children);
-    firstCells[firstCell.x].className = 'cell snake-cell';
     const oldCells = Array.from(rows[oldCell.y].children);
     if (THEME.value === 'pixelized') {
+        firstCells[firstCell.x].className = 'cell snake-cell';
         oldCells[oldCell.x].className = 'cell empty-cell-pixelized';
+    } else if (THEME.value === 'light') {
+        firstCells[firstCell.x].className = 'cell snake-cell-light';
+        oldCells[oldCell.x].className = 'cell empty-cell-light';
     } else {
+        firstCells[firstCell.x].className = 'cell snake-cell';
         oldCells[oldCell.x].className = 'cell empty-cell';
     }
 }

@@ -88,6 +88,7 @@ body {
   display: flex;
 }
 
+/* theme */
 .cell {
   width: 10px;
   height: 10px;
@@ -104,9 +105,18 @@ body {
   border: 1px solid rgb(2, 83, 2);
 }
 
+.empty-cell-light {
+  background-color: white;
+}
+
 .snake-cell,
 .new-cell {
   border: 1px solid rgb(2, 83, 2);
+}
+
+.snake-cell-light {
+  border: 1px solid rgb(2, 83, 2);
+  background-color: black;
 }
 
 .new-cell {

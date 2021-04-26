@@ -11,7 +11,7 @@ const settings = {
     height: 45,
     width: 30,
     speed: 150,
-    speedCounter: 1,
+    speedCounter: 0,
     isGameOver: false,
     points: 0,
     currentBest: 0,
