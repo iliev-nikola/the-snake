@@ -15,7 +15,6 @@ const settings = {
     isGameOver: false,
     points: 0,
     currentBest: 0,
-    theme: 'classic',
     userBest: JSON.parse(localStorage.getItem('snake')).bestScore,
 }
 
@@ -34,14 +33,8 @@ function move(direction) {
     const { x, y } = snake[0];
     // change coordinates by the new direction
     if (direction === 'up') {
-        // if (y - 1 > 0 && gameBox[y - 1][x] === 2) {
-        //     snake.unshift({ x: x, y: y - 1 });
-        //     newCell.x = x;
-        //     newCell.y = y - 2;
-        // } else {
         newCell.x = x;
         newCell.y = y - 1;
-        // }
     } else if (direction === 'right') {
         newCell.x = x + 1;
         newCell.y = y;

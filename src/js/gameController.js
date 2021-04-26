@@ -17,6 +17,7 @@ function makeInitialBox() {
     CURRENT_SCORE.innerHTML = 0;
     lastDirection = null;
     gameBox = [];
+    // make the box
     if (LEVEL.value === 'border' || LEVEL.value === 'border-speed') {
         for (let row = 0; row < settings.height; row++) {
             let arr = [];
@@ -40,13 +41,13 @@ function makeInitialBox() {
             gameBox.push(arr);
         }
     }
-
+    // place the initial snake
     gameBox[middleY][middleX] = 1;
     gameBox[middleY][middleX + 1] = 1;
     gameBox[middleY][middleX + 2] = 1;
     snake = [{ x: middleX, y: middleY }, { x: middleX + 1, y: middleY }, { x: middleX + 2, y: middleY }];
     placeRandomDot('initial');
-    console.log(LEVEL.value)
+    // render the box
     gameBox.forEach(row => {
         const newRow = document.createElement('div');
         newRow.className = 'row';
@@ -102,6 +103,7 @@ document.body.addEventListener('keydown', (e) => {
             localStorage.setItem('snake', JSON.stringify({ bestScore: settings.points }));
             USER_BEST.innerHTML = settings.userBest;
         }
+
         return makeInitialBox();
     }
 
@@ -113,7 +115,6 @@ document.body.addEventListener('keydown', (e) => {
         if (lastDirection === 'up' || lastDirection === 'down') {
             return;
         }
-
         clearInterval(timer);
         timer = setInterval(() => {
             move('up');
@@ -152,28 +153,24 @@ document.body.addEventListener('keydown', (e) => {
 });
 
 // speed
-SPEED_UP.addEventListener('click', (e) => {
-    e.preventDefault();
+SPEED_UP.addEventListener('click', () => {
     settings.speed -= 15;
     settings.speedCounter++;
     SPEED_COUNTER.innerHTML = settings.speedCounter;
 });
 
-SPEED_DOWN.addEventListener('click', (e) => {
-    e.preventDefault();
+SPEED_DOWN.addEventListener('click', () => {
     settings.speed += 15;
     settings.speedCounter--;
     SPEED_COUNTER.innerHTML = settings.speedCounter;
 });
 
 // level
-LEVEL.addEventListener('change', (e) => {
-    e.preventDefault();
+LEVEL.addEventListener('change', () => {
     makeInitialBox();
 });
 
 // theme
-THEME.addEventListener('change', (e) => {
-    e.preventDefault();
+THEME.addEventListener('change', () => {
     makeInitialBox();
 });
