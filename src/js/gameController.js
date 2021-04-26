@@ -46,6 +46,7 @@ function makeInitialBox() {
     gameBox[middleY][middleX + 2] = 1;
     snake = [{ x: middleX, y: middleY }, { x: middleX + 1, y: middleY }, { x: middleX + 2, y: middleY }];
     placeRandomDot('initial');
+    console.log(LEVEL.value)
     gameBox.forEach(row => {
         const newRow = document.createElement('div');
         newRow.className = 'row';
@@ -57,7 +58,11 @@ function makeInitialBox() {
             } else if (el === 2) {
                 cell.className += ' new-cell';
             } else {
-                cell.className += ' empty-cell';
+                if (THEME.value === 'pixelized') {
+                    cell.className += ' empty-cell-pixelized';
+                } else {
+                    cell.className += ' empty-cell';
+                }
             }
 
             newRow.append(cell);
@@ -75,7 +80,11 @@ function render() {
     const firstCells = Array.from(rows[firstCell.y].children);
     firstCells[firstCell.x].className = 'cell snake-cell';
     const oldCells = Array.from(rows[oldCell.y].children);
-    oldCells[oldCell.x].className = 'cell empty-cell';
+    if (THEME.value === 'pixelized') {
+        oldCells[oldCell.x].className = 'cell empty-cell-pixelized';
+    } else {
+        oldCells[oldCell.x].className = 'cell empty-cell';
+    }
 }
 
 // EVENT LISTENERS
@@ -157,7 +166,14 @@ SPEED_DOWN.addEventListener('click', (e) => {
     SPEED_COUNTER.innerHTML = settings.speedCounter;
 });
 
+// level
 LEVEL.addEventListener('change', (e) => {
+    e.preventDefault();
+    makeInitialBox();
+});
+
+// theme
+THEME.addEventListener('change', (e) => {
     e.preventDefault();
     makeInitialBox();
 });

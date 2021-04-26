@@ -12,5 +12,8 @@ const CURRENT_SCORE = getById('currentScore');
 const CURRENT_BEST = getById('currentBest');
 const USER_BEST = getById('userBest');
 
-// THEME
+// LEVEL
 const LEVEL = getById('level');
+
+// THEME
+const THEME = getById('theme');
