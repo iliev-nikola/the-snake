@@ -186,13 +186,13 @@ document.body.addEventListener('keydown', (e) => {
 
 // speed
 SPEED_UP.addEventListener('click', () => {
-    settings.speed -= 15;
+    settings.speed -= 10;
     settings.speedCounter++;
     SPEED_COUNTER.innerHTML = settings.speedCounter;
 });
 
 SPEED_DOWN.addEventListener('click', () => {
-    settings.speed += 15;
+    settings.speed += 10;
     settings.speedCounter--;
     SPEED_COUNTER.innerHTML = settings.speedCounter;
 });
