@@ -1,3 +1,13 @@
+// Set user best score
+if (localStorage.getItem('snake')) {
+    const bestScore = utils.getBestScore();
+    USER_BEST.innerHTML = bestScore;
+    settings.userBest = bestScore;
+} else {
+    utils.setBestScore(0);
+    USER_BEST.innerHTML = 0;
+}
+
 // Setup the size of the game over screen
 GAME_OVER_SCREEN.style.width = settings.width * 10 + 'px';
 GAME_OVER_SCREEN.style.height = settings.height * 10 + 'px';
@@ -5,6 +15,16 @@ GAME_OVER_SCREEN.style.height = settings.height * 10 + 'px';
 // Make initial render of the box
 function makeInitialBox() {
     // clear the initial data to start from the beginning
+    if (settings.points > settings.currentBest) {
+        settings.currentBest = settings.points;
+        CURRENT_BEST.innerHTML = settings.points;
+    }
+
+    if (settings.points > settings.userBest) {
+        settings.userBest = settings.points;
+        utils.setBestScore(settings.points);
+        USER_BEST.innerHTML = settings.userBest;
+    }
     clearInterval(timer);
     timer = null;
     settings.isGameOver = false;
@@ -103,17 +123,6 @@ function render() {
 document.body.addEventListener('keydown', (e) => {
     e.preventDefault();
     if (e.key === ' ') {
-        if (settings.points > settings.currentBest) {
-            settings.currentBest = settings.points;
-            CURRENT_BEST.innerHTML = settings.points;
-        }
-
-        if (settings.points > settings.userBest) {
-            settings.userBest = settings.points;
-            localStorage.setItem('snake', JSON.stringify({ bestScore: settings.points }));
-            USER_BEST.innerHTML = settings.userBest;
-        }
-
         return makeInitialBox();
     }
 

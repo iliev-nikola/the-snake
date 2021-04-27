@@ -1,11 +1,3 @@
-// set user best score
-if (localStorage.getItem('snake')) {
-    USER_BEST.innerHTML = JSON.parse(localStorage.getItem('snake')).bestScore;
-} else {
-    localStorage.setItem('snake', JSON.stringify({ bestScore: 0 }));
-    USER_BEST.innerHTML = 0;
-}
-
 // initial settings of the field
 const settings = {
     height: 45,
@@ -15,7 +7,7 @@ const settings = {
     isGameOver: false,
     points: 0,
     currentBest: 0,
-    userBest: JSON.parse(localStorage.getItem('snake')).bestScore,
+    userBest: 0,
 }
 
 let timer;
