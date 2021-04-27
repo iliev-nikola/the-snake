@@ -14,7 +14,7 @@ GAME_OVER_SCREEN.style.height = settings.height * 10 + 'px';
 
 // Make initial render of the box
 function makeInitialBox() {
-    // clear the initial data to start from the beginning
+    // set points rendering
     if (settings.points > settings.currentBest) {
         settings.currentBest = settings.points;
         CURRENT_BEST.innerHTML = settings.points;
@@ -25,6 +25,7 @@ function makeInitialBox() {
         utils.setBestScore(settings.points);
         USER_BEST.innerHTML = settings.userBest;
     }
+    // clear the initial data to start from the beginning
     clearInterval(timer);
     timer = null;
     settings.isGameOver = false;

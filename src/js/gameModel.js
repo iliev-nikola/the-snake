@@ -64,6 +64,7 @@ function move(direction) {
         return;
     } else if (nextCellValue === 2) {
         // if it's food
+        gameBox[newCell.y][newCell.x] = 1;
         settings.points += 10;
         if (LEVEL.value === 'auto-speed-increase' || LEVEL.value === 'border-speed') {
             settings.speed -= 5;
