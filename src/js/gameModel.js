@@ -61,6 +61,7 @@ function move(direction) {
         settings.isGameOver = true;
         clearInterval(timer);
         GAME_OVER_SCREEN.style.display = 'flex';
+        MAIN_CONTAINER.style.opacity = 0.3;
         return;
     } else if (nextCellValue === 2) {
         // if it's food

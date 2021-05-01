@@ -8,10 +8,6 @@ if (localStorage.getItem('snake')) {
     USER_BEST.innerHTML = 0;
 }
 
-// Setup the size of the game over screen
-GAME_OVER_SCREEN.style.width = settings.width * 10 + 'px';
-GAME_OVER_SCREEN.style.height = settings.height * 10 + 'px';
-
 // Make initial render of the box
 function makeInitialBox() {
     // set points rendering
@@ -35,6 +31,7 @@ function makeInitialBox() {
     MAIN_CONTAINER.innerHTML = '';
     SPEED_COUNTER.innerHTML = settings.speedCounter;
     GAME_OVER_SCREEN.style.display = 'none';
+    MAIN_CONTAINER.style.opacity = 1;
     CURRENT_SCORE.innerHTML = 0;
     lastDirection = null;
     gameBox = [];
