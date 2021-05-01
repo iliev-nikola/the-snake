@@ -64,7 +64,7 @@ function makeInitialBox() {
     gameBox[middleY][middleX + 1] = 1;
     gameBox[middleY][middleX + 2] = 1;
     snake = [{ x: middleX, y: middleY }, { x: middleX + 1, y: middleY }, { x: middleX + 2, y: middleY }];
-    placeRandomDot('initial');
+    gameModel.placeRandomDot('initial');
     // render the box
     gameBox.forEach(row => {
         const newRow = document.createElement('div');
@@ -129,11 +129,11 @@ document.body.addEventListener('keydown', (e) => {
             return;
         }
         clearInterval(timer);
-        move('up');
+        gameModel.move('up');
         if (!settings.isGameOver) {
             render();
             timer = setInterval(() => {
-                move('up');
+                gameModel.move('up');
                 render();
             }, settings.speed);
         }
@@ -144,11 +144,11 @@ document.body.addEventListener('keydown', (e) => {
             snake = snake.reverse();
         }
         clearInterval(timer);
-        move('right');
+        gameModel.move('right');
         if (!settings.isGameOver) {
             render();
             timer = setInterval(() => {
-                move('right');
+                gameModel.move('right');
                 render();
             }, settings.speed);
         }
@@ -157,11 +157,11 @@ document.body.addEventListener('keydown', (e) => {
             return;
         }
         clearInterval(timer);
-        move('down');
+        gameModel.move('down');
         if (!settings.isGameOver) {
             render();
             timer = setInterval(() => {
-                move('down');
+                gameModel.move('down');
                 render();
             }, settings.speed);
         }
@@ -170,11 +170,11 @@ document.body.addEventListener('keydown', (e) => {
             return;
         }
         clearInterval(timer);
-        move('left');
+        gameModel.move('left');
         if (!settings.isGameOver) {
             render();
             timer = setInterval(() => {
-                move('left');
+                gameModel.move('left');
                 render();
             }, settings.speed);
         }
