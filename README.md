@@ -1,4 +1,4 @@
-# The Snake
+# The Snake - Kolyo's edition
 
 ## My retro interpretation of the game "The Snake"
 
