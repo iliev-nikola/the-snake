@@ -18,7 +18,7 @@
 - Left-handed compatibility (WASD keys)
 - Store current/current best/user's best score
 
->Cannot be played with a mobile device yet
+>Cannot be played on a mobile device yet
 
 ### Screenshots:
 
