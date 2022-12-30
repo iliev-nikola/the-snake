@@ -3,6 +3,22 @@ body {
   background-color: lightskyblue;
 }
 
+h1 {
+  font-weight: 600;
+}
+
+button {
+  border: 2px solid rgb(14, 77, 1);
+  border-radius: 4px;
+  outline: none;
+  background-color: white;
+  font-weight: 600;
+}
+
+button:active {
+  background-color: rgb(176, 173, 173);
+}
+
 /* HEADER */
 #header {
   width: 100%;
@@ -15,42 +31,42 @@ body {
 #score {
   text-align: right;
   line-height: 1.2;
-  font-size: 0.9vw;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 #score > tbody > tr > td {
-  width: 3vw;
+  width: 50px;
   text-align: right;
-  font-weight: 600;
-}
-
-.score-title {
-  width: 7vw;
-  font-weight: 600;
 }
 
 /* title */
-#title {
+.title {
   margin: 2% 5%;
   text-align: center;
   line-height: 1.2;
 }
 
-#title > h1 {
-  font-size: 3.5vw;
-  font-weight: 600;
+.title > h1 {
+  font-size: 50px;
 }
 
-#title > p {
-  font-size: 1.5vw;
+.title > p {
+  font-size: 22px;
+}
+
+#titleMobile {
+  display: none;
 }
 
 /* options */
 #options {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  width: 10vw;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  font-size: 15px;
 }
 
 #speed {
@@ -59,30 +75,21 @@ body {
   text-align: center;
   height: fit-content;
   align-items: center;
-  margin-bottom: 1.3vh;
 }
 
 #speed > h1 {
-  font-weight: 600;
-  padding: 0 0.8vw;
-  font-size: 0.8vw;
+  padding: 0 5px;
 }
 
-#level {
-  margin-bottom: 0.4vw;
+#level, #theme {
+  width: 100%;
 }
 
 #level,
-#theme,
-#speed > button {
+#theme {
   border: 0.3vh solid rgb(14, 77, 1);
-  border-radius: 0.4vh;
   outline: none;
-  font-size: 0.8vw;
-}
-
-#speed > button {
-  width: 1.8vw;
+  border-radius: 4px;
 }
 
 /* MAIN CONTAINER */
@@ -94,7 +101,7 @@ body {
 
 #mainContainer {
   border: 2px solid rgb(14, 77, 1);
-  border-radius: 0.6vh;
+  border-radius: 2px;
   opacity: 0.4;
   transition: 0.7s all ease;
 }
@@ -144,18 +151,82 @@ body {
   display: none;
   justify-content: center;
   align-items: center;
-  border-radius: 0.6vh;
+  border-radius: 2px;
 }
 
 #gameOverScreen > h1 {
-  font-weight: 600;
-  font-size: 2.5vw;
+  font-size: 26px;
 }
 
 /* FOOTER */
-#footer {
+.footer {
   line-height: 1.5;
   margin-top: 1vh;
   text-align: center;
-  font-size: 0.9vw;
+}
+
+#footerMobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow: hidden;
+    pointer-events: auto;
+  }
+
+  /* HEADER */
+  #header {
+    justify-content: space-around;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+
+  .title > h1 {
+    font-size: 40px;
+  }
+  
+  .title > p {
+    font-size: 16px;
+  }
+
+  #title {
+    display: none;
+  }
+
+  #titleMobile {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  #level, #theme {
+    width: 130px;
+  }
+
+  #speed {
+    margin-bottom: 0;
+  }
+
+  #options, #score {
+    font-size: 13px;
+    gap: 1px;
+  }
+
+  /* MAIN */
+  #main {
+    margin-top: 10px;
+  }
+
+  /* FOOTER */
+  #footer {
+    display: none;
+  }
+
+  #footerMobile {
+    display: block;
+  }
+
+  #newGameBtn {
+    margin-bottom: 10px;
+  }
 }

@@ -17,3 +17,19 @@ const LEVEL = utils.getById('level');
 
 // THEME
 const THEME = utils.getById('theme');
+
+// NEW GAME
+const NEW_GAME = utils.getById('newGameBtn');
+
+// KEYS
+const KEYS = {
+	up: 'ArrowUp',
+  down: 'ArrowDown',
+  left: 'ArrowLeft',
+  right: 'ArrowRight',
+  space: ' ',
+  w: 'w',
+  a: 'a',
+  s: 's',
+  d: 'd'
+};
