@@ -10,18 +10,15 @@ const settings = {
   userBest: 0,
 }
 
-let timer;
-let lastDirection;
-let oldCell;
-let gameBox;
+let timer, lastDirection, oldCell, gameBox, xDown, yDown;
 
 // initial position of the snake and first dot
 const middleY = Math.floor(settings.height / 2);
 const middleX = Math.floor(settings.width / 2);
 let snake = [{ x: middleX, y: middleY }, { x: middleX + 1, y: middleY }, { x: middleX + 2, y: middleY }];
 
-const gameModel = (function () {
-  function move(direction) {
+const gameModel = (() => {
+  const move = (direction) => {
     const newCell = {};
     const { x, y } = snake[0];
     // change coordinates by the new direction
@@ -52,6 +49,7 @@ const gameModel = (function () {
 
     // check what next cell contains
     const nextCellValue = gameBox[newCell.y][newCell.x];
+
     if (nextCellValue === 0) {
       // if it's free
       oldCell = snake.pop();
@@ -68,20 +66,23 @@ const gameModel = (function () {
       // if it's food
       gameBox[newCell.y][newCell.x] = 1;
       settings.points += 10;
+
       if (LEVEL.value === 'auto-speed-increase' || LEVEL.value === 'border-speed') {
         settings.speed -= 3;
       }
+
       CURRENT_SCORE.innerHTML = settings.points;
       placeRandomDot();
     }
 
     snake.unshift(newCell);
     lastDirection = direction;
-  }
+  };
 
-  function placeRandomDot(type) {
+  const placeRandomDot = (type) => {
     let randomX = utils.randomize(settings.width);
     let randomY = utils.randomize(settings.height);
+
     while (gameBox[randomY][randomX] !== 0) {
       randomX = utils.randomize(settings.width);
       randomY = utils.randomize(settings.height);
@@ -94,7 +95,7 @@ const gameModel = (function () {
       const cells = Array.from(rows[randomY].children);
       cells[randomX].className = 'cell new-cell';
     }
-  }
+  };
 
   return {
     move,

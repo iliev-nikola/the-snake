@@ -1,7 +1,5 @@
 // Set user best score
-const gameController = (function () {
-  let xDown, yDown;
-
+const gameController = (() => {
   if (localStorage.getItem('snake')) {
     const bestScore = utils.getBestScore();
     USER_BEST.innerHTML = bestScore;
@@ -12,7 +10,7 @@ const gameController = (function () {
   }
 
   // Make initial render of the box
-  function makeInitialBox() {
+  const makeInitialBox = () => {
     // set points rendering
     if (settings.points > settings.currentBest) {
       settings.currentBest = settings.points;
@@ -72,9 +70,11 @@ const gameController = (function () {
     gameBox.forEach(row => {
       const newRow = document.createElement('div');
       newRow.className = 'row';
+
       row.forEach(el => {
         const cell = document.createElement('div');
         cell.className = 'cell';
+
         if (el === 1) {
           if (THEME.value === 'light') {
             cell.className += ' snake-cell-light';
@@ -98,15 +98,16 @@ const gameController = (function () {
 
       MAIN_CONTAINER.append(newRow);
     });
-  }
+  };
 
   makeInitialBox();
 
-  function render() {
+  const render = () => {
     const firstCell = snake[0];
     const rows = Array.from(MAIN_CONTAINER.children);
     const firstCells = Array.from(rows[firstCell.y].children);
     const oldCells = Array.from(rows[oldCell.y].children);
+
     if (THEME.value === 'pixelized') {
       firstCells[firstCell.x].className = 'cell snake-cell';
       oldCells[oldCell.x].className = 'cell empty-cell-pixelized';
@@ -117,14 +118,16 @@ const gameController = (function () {
       firstCells[firstCell.x].className = 'cell snake-cell';
       oldCells[oldCell.x].className = 'cell empty-cell';
     }
-  }
+  };
 
-  function moveUp() {
+  const moveUp = () => {
     if (lastDirection === 'up' || lastDirection === 'down') {
       return;
     }
+
     clearInterval(timer);
     gameModel.move('up');
+
     if (!settings.isGameOver) {
       render();
       timer = setInterval(() => {
@@ -132,16 +135,18 @@ const gameController = (function () {
         render();
       }, settings.speed);
     }
-  }
+  };
 
-  function moveRight() {
+  const moveRight = () => {
     if (lastDirection === 'right' || lastDirection === 'left') {
       return;
     } else if (!timer) {
       snake = snake.reverse();
     }
+
     clearInterval(timer);
     gameModel.move('right');
+
     if (!settings.isGameOver) {
       render();
       timer = setInterval(() => {
@@ -149,14 +154,16 @@ const gameController = (function () {
         render();
       }, settings.speed);
     }
-  }
+  };
 
-  function moveDown() {
+  const moveDown = () => {
     if (lastDirection === 'down' || lastDirection === 'up') {
       return;
     }
+
     clearInterval(timer);
     gameModel.move('down');
+
     if (!settings.isGameOver) {
       render();
       timer = setInterval(() => {
@@ -164,14 +171,16 @@ const gameController = (function () {
         render();
       }, settings.speed);
     }
-  }
+  };
 
-  function moveLeft() {
+  const moveLeft = () => {
     if (lastDirection === 'left' || lastDirection === 'right') {
       return;
     }
+
     clearInterval(timer);
     gameModel.move('left');
+
     if (!settings.isGameOver) {
       render();
       timer = setInterval(() => {
@@ -179,23 +188,24 @@ const gameController = (function () {
         render();
       }, settings.speed);
     }
-  }
+  };
 
   // EVENT LISTENERS
   // keys
   document.body.addEventListener('keydown', (e) => {
     e.preventDefault();
-    if (e.key === ' ') {
+
+    if (e.key === KEYS.space) {
       return makeInitialBox();
     }
 
-    if (e.key === 'ArrowUp' || e.key === 'w') {
+    if (e.key === KEYS.up || e.key === KEYS.w) {
       moveUp();
-    } else if (e.key === 'ArrowRight' || e.key === 'd') {
+    } else if (e.key === KEYS.right || e.key === KEYS.d) {
       moveRight();
-    } else if (e.key === 'ArrowDown' || e.key === 's') {
+    } else if (e.key === KEYS.down || e.key === KEYS.s) {
       moveDown();
-    } else if (e.key === 'ArrowLeft' || e.key === 'a') {
+    } else if (e.key === KEYS.left || e.key === KEYS.a) {
       moveLeft();
     }
   });
@@ -216,7 +226,6 @@ const gameController = (function () {
 
     const xDiff = xDown - xUp;
     const yDiff = yDown - yUp;
-
 
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
       if (xDiff > 0) {
@@ -258,17 +267,11 @@ const gameController = (function () {
   });
 
   // level
-  LEVEL.addEventListener('change', () => {
-    makeInitialBox();
-  });
+  LEVEL.addEventListener('change', makeInitialBox);
 
   // theme
-  THEME.addEventListener('change', () => {
-    makeInitialBox();
-  });
+  THEME.addEventListener('change', makeInitialBox);
 
   // new game
-  NEW_GAME.addEventListener('click', () => {
-    makeInitialBox();
-  });
+  NEW_GAME.addEventListener('click', makeInitialBox);
 })();
