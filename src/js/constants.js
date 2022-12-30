@@ -17,3 +17,6 @@ const LEVEL = utils.getById('level');
 
 // THEME
 const THEME = utils.getById('theme');
+
+// NEW GAME
+const NEW_GAME = utils.getById('newGameBtn');

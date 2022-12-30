@@ -1,83 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./src/css/reset.css">
-        <link rel="stylesheet" href="./src/css/style.css">
-        <link rel="shortcut icon" href="./src/assets/favicon.png"
-            type="image/x-icon">
-        <title>The Snake</title>
-    </head>
-    <body>
-        <!-- HEADER -->
-        <header id="header">
-            <table id="score">
-                <tbody>
-                    <tr>
-                        <th class="score-title">CURRENT SCORE:</th>
-                        <td id="currentScore">0</td>
-                    </tr>
-                    <tr>
-                        <th class="score-title">CURRENT BEST:</th>
-                        <td id="currentBest">0</td>
-                    </tr>
-                    <tr>
-                        <th class="score-title">USER'S BEST:</th>
-                        <td id="userBest"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div id="title">
-                <h1>The Snake</h1>
-                <p>Kolyo's edition &#128013;</p>
-            </div>
-            <div id="options">
-                <div id="speed">
-                    <button id="speedDownBtn">-</button>
-                    <h1>SPEED: <span id="speedCounter"></span></h1>
-                    <button id="speedUpBtn">+</button>
-                </div>
-                <select name="level" id="level">
-                    <option value="" disabled selected>Choose level...</option>
-                    <option value="classic" title="Go thru the walls">Classic</option>
-                    <option value="auto-speed-increase"
-                        title="Eat more, speed more">Auto-speed increase</option>
-                    <option value="border"
-                        title="Don't go thru the walls">Border style</option>
-                    <option value="border-speed"
-                        title="Try to stay alive">Border & Speed</option>
-                </select>
-                <select name="theme" id="theme">
-                    <option value="" disabled selected>Choose theme...</option>
-                    <option value="dark" title="Good old classic dark">Dark
-                        (classic)</option>
-                    <option value="light" title="Lighty-white">Light</option>
-                    <option value="pixelized" title="Pixel-liked cells">Pixelized</option>
-                </select>
-            </div>
-        </header>
-        <!-- MAIN CONTAINER -->
-        <main id="main">
-            <div id="mainContainer"></div>
-            <div id="gameOverScreen">
-                <h1>Game over</h1>
-            </div>
-        </main>
-        <!-- FOOTER -->
-        <footer id="footer">
-            <p>*use ARROW keys to start the game</p>
-            <p>(or WASD keys for left-handed)</p>
-            <p>*press SPACE for new game</p>
-            <p>*when changing the speed with buttons,</p>
-            <p>change snake's direction to take effect</p>
-        </footer>
 
-        <!-- JAVASCRIPT -->
-        <script src="./src/js/utils.js"></script>
-        <script src="./src/js/constants.js"></script>
-        <script src="./src/js/gameModel.js"></script>
-        <script src="./src/js/gameController.js"></script>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/css/reset.css">
+  <link rel="stylesheet" href="./src/css/style.css">
+  <link rel="shortcut icon" href="./src/assets/favicon.png" type="image/x-icon">
+  <title>The Snake</title>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <div id="titleMobile" class="title">
+    <h1>The Snake</h1>
+    <p>Kolyo's edition &#128013;</p>
+  </div>
+
+  <header id="header">
+    <table id="score">
+      <tbody>
+        <tr>
+          <th class="score-title">CURRENT SCORE:</th>
+          <td id="currentScore">0</td>
+        </tr>
+        <tr>
+          <th class="score-title">CURRENT BEST:</th>
+          <td id="currentBest">0</td>
+        </tr>
+        <tr>
+          <th class="score-title">USER'S BEST:</th>
+          <td id="userBest"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="title" class="title">
+      <h1>The Snake</h1>
+      <p>Kolyo's edition &#128013;</p>
+    </div>
+    <div id="options">
+      <div id="speed">
+        <button id="speedDownBtn">-</button>
+        <h1>SPEED: <span id="speedCounter"></span></h1>
+        <button id="speedUpBtn">+</button>
+      </div>
+      <select name="level" id="level">
+        <option value="" disabled selected>Choose level...</option>
+        <option value="classic" title="Go thru the walls">Classic</option>
+        <option value="auto-speed-increase" title="Eat more, speed more">Auto-speed increase</option>
+        <option value="border" title="Don't go thru the walls">Border style</option>
+        <option value="border-speed" title="Try to stay alive">Border & Speed</option>
+      </select>
+      <select name="theme" id="theme">
+        <option value="" disabled selected>Choose theme...</option>
+        <option value="dark" title="Good old classic dark">Dark
+          (classic)</option>
+        <option value="light" title="Lighty-white">Light</option>
+        <option value="pixelized" title="Pixel-liked cells">Pixelized</option>
+      </select>
+    </div>
+  </header>
+  <!-- MAIN CONTAINER -->
+  <main id="main">
+    <div id="mainContainer"></div>
+    <div id="gameOverScreen">
+      <h1>Game over</h1>
+    </div>
+  </main>
+  <!-- FOOTER -->
+  <footer id="footer" class="footer">
+    <p>*use ARROW keys to start the game</p>
+    <p>(or WASD keys for left-handed)</p>
+    <p>*press SPACE for new game</p>
+    <p>*when changing the speed with buttons,</p>
+    <p>change snake's direction to take effect</p>
+  </footer>
+
+  <footer id="footerMobile" class="footer">
+    <button id="newGameBtn">NEW GAME</button>
+    <p>*swipe to start the game</p>
+    <p>*when changing the speed with buttons,</p>
+    <p>change snake's direction to take effect</p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script src="./src/js/utils.js"></script>
+  <script src="./src/js/constants.js"></script>
+  <script src="./src/js/gameModel.js"></script>
+  <script src="./src/js/gameController.js"></script>
+</body>
+
 </html>
