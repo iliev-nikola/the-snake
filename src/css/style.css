@@ -178,16 +178,16 @@ button:active {
   /* HEADER */
   #header {
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: 12px;
     font-size: 12px;
   }
 
   .title > h1 {
-    font-size: 40px;
+    font-size: 36px;
   }
   
   .title > p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   #title {
@@ -224,9 +224,5 @@ button:active {
 
   #footerMobile {
     display: block;
-  }
-
-  #newGameBtn {
-    margin-bottom: 10px;
   }
 }
