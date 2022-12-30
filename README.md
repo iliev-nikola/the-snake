@@ -16,9 +16,9 @@
 - Change game type (level)
 - Change theme
 - Left-handed compatibility (WASD keys)
+- Mobile devices compatibility (swipe)
 - Store current/current best/user's best score
 
->Cannot be played on a mobile device yet
 
 ### Screenshots:
 

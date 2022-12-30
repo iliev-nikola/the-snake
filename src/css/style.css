@@ -3,6 +3,10 @@ body {
   background-color: lightskyblue;
 }
 
+h1 {
+  font-weight: 600;
+}
+
 button {
   border: 2px solid rgb(14, 77, 1);
   border-radius: 4px;
@@ -45,7 +49,6 @@ button:active {
 
 .title > h1 {
   font-size: 50px;
-  font-weight: 600;
 }
 
 .title > p {
@@ -75,7 +78,6 @@ button:active {
 }
 
 #speed > h1 {
-  font-weight: 600;
   padding: 0 5px;
 }
 
@@ -154,7 +156,6 @@ button:active {
 
 #gameOverScreen > h1 {
   font-size: 26px;
-  font-weight: 600;
 }
 
 /* FOOTER */
